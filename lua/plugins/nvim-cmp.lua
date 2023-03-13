@@ -11,6 +11,44 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local icons = {
+  Namespace = " ",
+  Package = " ",
+  String = " ",
+  Number = " ",
+  Boolean = "◩ ",
+  Array = " ",
+  Object = " ",
+  Key = " ",
+  Null = "ﳠ ",
+  Copilot = " ",
+  Text = "",
+  Method = "m",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+}
+
 return {
   "hrsh7th/nvim-cmp",
   opts = {
@@ -47,5 +85,14 @@ return {
       { name = "luasnip" },
       { name = "path" },
     }),
+    formatting = {
+      format = function(_, item)
+        -- local icons = require("lazyvim.config").icons.kinds
+        if icons[item.kind] then
+          item.kind = string.format("%s %s", icons[item.kind], item.kind)
+        end
+        return item
+      end,
+    },
   },
 }

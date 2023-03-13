@@ -14,4 +14,17 @@ return {
       desc = "Explorer NeoTree (root dir)",
     },
   },
+  opts = {
+    sources = {
+      "filesystem",
+      "git_status",
+    },
+    source_selector = {
+      winbar = true,
+      content_layout = "center",
+    },
+    windows = {
+      width = 36,
+    },
+  },
 }
