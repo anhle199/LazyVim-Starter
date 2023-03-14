@@ -5,9 +5,10 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = {
     -- new
-    { "<C-p>", Util.telescope("files"), desc = "Find Files (root dir)" },
+    { "<C-p>", Util.telescope("files", { cwd = false }), desc = "Find Files (root dir)" },
     { "<C-l>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
     { "<leader>gd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+    { "<leader>/", Util.telescope("live_grep", { cwd = false }), desc = "Find in Files (Grep)" },
 
     -- disables default mappings
     { "<leader>,", false },
@@ -21,6 +22,8 @@ return {
     { "<leader>sd", false },
     { "<leader>sg", false },
     { "<leader>sG", false },
+    { "<leader>sw", false },
+    { "<leader>sW", false },
   },
   opts = {
     defaults = {
