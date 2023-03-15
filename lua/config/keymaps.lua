@@ -48,6 +48,11 @@ unmap("n", "<S-l>")
 unmap("n", "[b")
 unmap("n", "]b")
 
+unmap("n", "<leader>qq")
+unmap("n", "<leader>fn")
+unmap("n", "<leader>ft")
+unmap("n", "<leader>fT")
+
 --------------------------------------------------------------------
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -61,12 +66,13 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map("i", "jk", "<esc>", { noremap = true, silent = true, desc = "Exit insert mode" })
-map("v", "<BS>", '"_d', { noremap = true, silent = true }) -- Enable backspace to delete selected area
+map("v", "<bs>", "<del>", { noremap = true, silent = true, desc = "Delete selected area using Backspace" }) -- Enable backspace to delete selected area
 
 map("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer" })
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit buffer" })
 
 local Util = require("lazyvim.util")
 if Util.has("bufferline.nvim") then

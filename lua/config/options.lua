@@ -4,3 +4,19 @@
 
 vim.opt.mouse = ""
 vim.opt.backspace = { "start", "eol", "indent" } -- Enable 'Backspace' key in insert mode
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.timeoutlen = 500
+
+--------------------------------------------------
+-- Processing file
+
+-- Creates a backup file
+opt.backup = false
+-- Creates a backup file while it is being edited. The backup is removed after the file was successfully written
+opt.writebackup = true
+opt.swapfile = true
+
+-- Persistent undo (true: enable, false: disable)
+-- enable: you are able to undo file after it is closed
+opt.undofile = false
