@@ -12,11 +12,11 @@ vim.opt.timeoutlen = 500
 -- Processing file
 
 -- Creates a backup file
-opt.backup = false
+vim.opt.backup = false
 -- Creates a backup file while it is being edited. The backup is removed after the file was successfully written
-opt.writebackup = true
-opt.swapfile = true
+vim.opt.writebackup = true
+vim.opt.swapfile = true
 
 -- Persistent undo (true: enable, false: disable)
 -- enable: you are able to undo file after it is closed
-opt.undofile = false
+vim.opt.undofile = false
