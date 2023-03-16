@@ -1,4 +1,4 @@
-local Actions = require("telescope.actions")
+local tele_actions = require("telescope.actions")
 
 return {
   {
@@ -36,25 +36,27 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = function()
       local Util = require("lazyvim.util")
-      local layout_config = {
-        width = 0.9,
-        preview_cutoff = 120,
-        preview_width = 0.6,
-      }
 
       return {
-        { "<C-p>", Util.telescope("files", { cwd = false, layout_config = layout_config }) },
-        { "<C-l>", Util.telescope("current_buffer_fuzzy_find", { layout_config = layout_config }) },
-        { "<leader>a", Util.telescope("live_grep", { cwd = false, layout_config = layout_config }) },
+        { "<C-p>", Util.telescope("files", { cwd = false }) },
+        { "<C-l>", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
+        { "<leader>a", Util.telescope("live_grep", { cwd = false }) },
       }
     end,
     opts = {
       defaults = {
+        layout_config = {
+          horizontal = {
+            preview_width = 0.6,
+            width = 0.9,
+            preview_cutoff = 120,
+          },
+        },
         mappings = {
           i = {
-            ["<c-t>"] = Actions.select_tab,
-            ["<C-j>"] = Actions.move_selection_next,
-            ["<C-k>"] = Actions.move_selection_previous,
+            ["<c-t>"] = tele_actions.select_tab,
+            ["<C-j>"] = tele_actions.move_selection_next,
+            ["<C-k>"] = tele_actions.move_selection_previous,
           },
         },
       },

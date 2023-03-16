@@ -6,13 +6,11 @@ return {
 
     -- disabled
     keys[#keys + 1] = { "<leader>cd", false }
-    keys[#keys + 1] = { "<leader>ca", false, mode = { "n", "v" } }
     keys[#keys + 1] = { "<leader>cf", false }
     keys[#keys + 1] = { "<leader>cf", false, mode = "v" }
 
     -- new
     keys[#keys + 1] = { "<leader>d", vim.diagnostic.open_float, has = "documentFormatting" }
-    keys[#keys + 1] = { "gca", vim.lsp.buf.code_action, mode = { "n", "v" }, has = "codeAction" }
     keys[#keys + 1] = { "<leader>f", format, has = "documentFormatting" }
     keys[#keys + 1] = { "<leader>f", format, mode = "v", has = "documentRangeFormatting" }
   end,
