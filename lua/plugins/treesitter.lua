@@ -18,6 +18,8 @@ return {
       "rust",
       "dockerfile",
       "sql",
+      "typescript",
+      "tsx",
     },
   },
 }

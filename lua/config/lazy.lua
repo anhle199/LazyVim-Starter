@@ -13,13 +13,14 @@ require("lazy").setup({
 
     -- language servers
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- tools
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.linting.eslint" },
 
     -- import/override with your plugins
     { import = "plugins" },
+
+    -- import my extra plugins
+    { import = "extras.typescript" },
+    { import = "extras.eslint" },
+    { import = "extras.prettier" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
