@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+      "windwp/nvim-ts-autotag",
+  },
   opts = {
     highlight = {
       -- disable treesitter for the large files
@@ -20,6 +23,9 @@ return {
       "sql",
       "typescript",
       "tsx",
+    },
+    autotag = {
+      enable = true,
     },
   },
 }
