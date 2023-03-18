@@ -13,10 +13,10 @@ unmap("n", "<C-s>")
 -- unmap("s", "<C-s>")
 
 -- Move to window using the <ctrl> hjkl keys
--- unmap("n", "<C-h>")
--- unmap("n", "<C-j>")
--- unmap("n", "<C-k>")
--- unmap("n", "<C-l>")
+unmap("n", "<C-h>")
+unmap("n", "<C-j>")
+unmap("n", "<C-k>")
+unmap("n", "<C-l>")
 
 -- -- Move Lines
 unmap("n", "<A-j>")
@@ -66,7 +66,6 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map("i", "jk", "<esc>", { noremap = true, silent = true, desc = "Exit insert mode" })
-map("v", "<bs>", "<del>", { noremap = true, silent = true, desc = "Delete selected area using Backspace" }) -- Enable backspace to delete selected area
 
 map("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move up" })

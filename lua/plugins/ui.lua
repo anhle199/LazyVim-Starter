@@ -47,51 +47,37 @@ return {
           },
         { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
       }
+      opts.sections.lualine_z = {
+        function()
+          return " " .. os.date("%Y-%m-%d %H:%M:%S")
+        end,
+      }
     end,
   },
 
+  { "SmiteshP/nvim-navic", enabled = false },
+
   {
-    "SmiteshP/nvim-navic",
-    enabled = false,
+    "goolord/alpha-nvim",
     opts = function()
-      return {
-        icons = {
-          Namespace = " ",
-          Package = " ",
-          String = " ",
-          Number = " ",
-          Boolean = "◩ ",
-          Array = " ",
-          Object = " ",
-          Key = " ",
-          Null = "ﳠ ",
-          Copilot = " ",
-          Text = "",
-          Method = "m",
-          Function = "",
-          Constructor = "",
-          Field = "",
-          Variable = "",
-          Class = "",
-          Interface = "",
-          Module = "",
-          Property = "",
-          Unit = "",
-          Value = "",
-          Enum = "",
-          Keyword = "",
-          Snippet = "",
-          Color = "",
-          File = "",
-          Reference = "",
-          Folder = "",
-          EnumMember = "",
-          Constant = "",
-          Struct = "",
-          Event = "",
-          Operator = "",
-          TypeParameter = "",
-        },
+      local dashboard = require("alpha.themes.dashboard")
+      local logo = [[
+       █████╗ ███╗   ██╗██╗  ██╗    ██╗     ███████╗
+      ██╔══██╗████╗  ██║██║  ██║    ██║     ██╔════╝
+      ███████║██╔██╗ ██║███████║    ██║     █████╗  
+      ██╔══██║██║╚██╗██║██╔══██║    ██║     ██╔══╝  
+      ██║  ██║██║ ╚████║██║  ██║    ███████╗███████╗
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚══════╝╚══════╝
+      ]]
+
+      dashboard.section.header.val = vim.split(logo, "\n")
+      dashboard.section.buttons.val = {
+        dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
+        dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+        dashboard.button("g", "  Find text", ":Telescope live_grep <CR>"),
+        dashboard.button("c", "  Config", ":e $MYVIMRC <CR>"),
+        dashboard.button("l", "z  Lazy", ":Lazy<CR>"),
+        dashboard.button("q", "  Quit", ":qa<CR>"),
       }
     end,
   },

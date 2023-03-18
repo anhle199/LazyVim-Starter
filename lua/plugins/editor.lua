@@ -3,17 +3,6 @@ local tele_actions = require("telescope.actions")
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
-    -- replace all keymaps with only one mapping
-    keys = function()
-      return {
-        {
-          "<leader>e",
-          function()
-            require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
-          end,
-        },
-      }
-    end,
     opts = {
       filesystem = {
         follow_current_file = false,

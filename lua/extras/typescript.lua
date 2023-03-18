@@ -9,10 +9,17 @@ return {
   },
 
   {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        table.insert(opts.ensure_installed, "typescript-language-server")
+      end
+    end,
+  },
+
+  {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "jose-elias-alvarez/typescript.nvim",
-    },
+    dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
       servers = {
         ---@type lspconfig.options.tsserver
@@ -21,22 +28,43 @@ return {
             completions = {
               completeFunctionCalls = true,
             },
+            typescript = {
+              format = {
+                enable = false,
+                insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
+              },
+              surveys = {
+                enabled = false,
+              },
+            },
+            javascript = {
+              format = {
+                enable = false,
+              },
+            },
           },
         },
       },
-      -- Overwrite default setup
-      -- Disable automatically fix problems by eslint
       setup = {
         tsserver = function(_, opts)
           require("lazyvim.util").on_attach(function(client, buffer)
             if client.name == "tsserver" then
-              -- stylua: ignore
-              vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
-              -- stylua: ignore
-              vim.keymap.set("n", "<leader>cR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = buffer })
+              vim.keymap.set(
+                "n",
+                "<leader>co",
+                "<cmd>TypescriptOrganizeImports<CR>",
+                { buffer = buffer, desc = "Organize Imports" }
+              )
 
-              -- Disable language server formatter
+              vim.keymap.set(
+                "n",
+                "<leader>cR",
+                "<cmd>TypescriptRenameFile<CR>",
+                { desc = "Rename File", buffer = buffer }
+              )
+
               client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
             end
           end)
           require("typescript").setup({ server = opts })

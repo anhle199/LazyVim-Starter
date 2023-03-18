@@ -25,7 +25,6 @@ return {
           border = "rounded",
         },
       },
-
       autoformat = false,
     },
     setup = {

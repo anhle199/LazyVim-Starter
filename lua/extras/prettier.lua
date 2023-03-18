@@ -1,18 +1,16 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "prettier",
-      },
-    },
+    opts = function(_, opts)
+      table.insert(opts.ensure_installed, "prettier")
+    end,
   },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
-      local prettier = require("null-ls").builtins.formatting.prettier.with({ prefer_local = true })
-      table.insert(opts.sources, prettier)
+      local formatting = require("null-ls").builtins.formatting
+      table.insert(opts.sources, formatting.prettier.with({ prefer_local = true }))
     end,
   },
 }

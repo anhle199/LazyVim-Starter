@@ -1,17 +1,22 @@
 return {
   "neovim/nvim-lspconfig",
-  -- other settings removed for brevity
   opts = {
     servers = {
       eslint = {
         settings = {
-          -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
           workingDirectory = { mode = "auto" },
         },
       },
     },
     setup = {
-      eslint = function() end,
+      eslint = function()
+        require("lazyvim.util").on_attach(function(client)
+          if client.name == "eslint" then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end
+        end)
+      end,
     },
   },
 }
