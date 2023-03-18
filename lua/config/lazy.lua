@@ -19,7 +19,7 @@ require("lazy").setup({
 
     -- import my extra plugins
     { import = "extras.typescript" },
-    { import = "extras.eslint" },
+    -- { import = "extras.eslint" },
     { import = "extras.prettier" },
   },
   defaults = {

@@ -13,10 +13,10 @@ unmap("n", "<C-s>")
 -- unmap("s", "<C-s>")
 
 -- Move to window using the <ctrl> hjkl keys
-unmap("n", "<C-h>")
-unmap("n", "<C-j>")
-unmap("n", "<C-k>")
-unmap("n", "<C-l>")
+-- unmap("n", "<C-h>")
+-- unmap("n", "<C-j>")
+-- unmap("n", "<C-k>")
+-- unmap("n", "<C-l>")
 
 -- -- Move Lines
 unmap("n", "<A-j>")

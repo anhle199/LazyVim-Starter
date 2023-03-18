@@ -16,7 +16,6 @@ return {
       keys[#keys + 1] = { "<leader>f", format, mode = "v", has = "documentRangeFormatting" }
     end,
     opts = {
-      -- options for vim.diagnostic.config()
       diagnostics = {
         underline = false,
         virtual_text = false,
@@ -28,6 +27,15 @@ return {
       },
 
       autoformat = false,
+    },
+    setup = {
+      lua_ls = function(_, opts)
+        require("lazyvim.util").on_attach(function(client, buffer)
+          if client.name == "lua_ls" then
+            client.server_capabilities.documentFormattingProvider = false
+          end
+        end)
+      end,
     },
   },
 }

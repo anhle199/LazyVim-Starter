@@ -38,9 +38,9 @@ return {
       local Util = require("lazyvim.util")
 
       return {
-        { "<C-p>", Util.telescope("files", { cwd = false }) },
-        { "<C-l>", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
-        { "<leader>a", Util.telescope("live_grep", { cwd = false }) },
+        { "<leader><space>", Util.telescope("files", { cwd = false }) },
+        { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
+        { "<leader>sa", Util.telescope("live_grep", { cwd = false }) },
       }
     end,
     opts = {
